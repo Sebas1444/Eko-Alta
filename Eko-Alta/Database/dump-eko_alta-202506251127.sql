@@ -5,7 +5,31 @@
 -- Dumped from database version 16.9 (Ubuntu 16.9-0ubuntu0.24.04.1)
 -- Dumped by pg_dump version 16.9 (Ubuntu 16.9-0ubuntu0.24.04.1)
 
--- Started on 2025-06-25 12:21:38 -03
+-- Started on 2025-06-25 12:27:36 -03
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+DROP DATABASE eko_alta;
+--
+-- TOC entry 3489 (class 1262 OID 16388)
+-- Name: eko_alta; Type: DATABASE; Schema: -; Owner: postgres
+--
+
+CREATE DATABASE eko_alta WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE_PROVIDER = libc LOCALE = 'es_PY.UTF-8';
+
+
+ALTER DATABASE eko_alta OWNER TO postgres;
+
+\connect eko_alta
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -61,7 +85,7 @@ CREATE SEQUENCE public.test_id_seq
 ALTER SEQUENCE public.test_id_seq OWNER TO admin;
 
 --
--- TOC entry 3489 (class 0 OID 0)
+-- TOC entry 3490 (class 0 OID 0)
 -- Dependencies: 215
 -- Name: test_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: admin
 --
@@ -103,7 +127,7 @@ CREATE SEQUENCE public.usuarios_id_seq
 ALTER SEQUENCE public.usuarios_id_seq OWNER TO admin;
 
 --
--- TOC entry 3490 (class 0 OID 0)
+-- TOC entry 3491 (class 0 OID 0)
 -- Dependencies: 217
 -- Name: usuarios_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: admin
 --
@@ -133,8 +157,6 @@ ALTER TABLE ONLY public.usuarios ALTER COLUMN id SET DEFAULT nextval('public.usu
 -- Data for Name: test; Type: TABLE DATA; Schema: public; Owner: admin
 --
 
-COPY public.test (id) FROM stdin;
-\.
 
 
 --
@@ -143,13 +165,11 @@ COPY public.test (id) FROM stdin;
 -- Data for Name: usuarios; Type: TABLE DATA; Schema: public; Owner: admin
 --
 
-COPY public.usuarios (id, nombre, usuario, password, rol, apellido) FROM stdin;
-1	Sebastian	escx	$2a$10$Dow1zWkqXqnhNjvZV0nmQOgo7IG6ZbXRYeRgo1x2VVRdUJrI7FoOO	admin	Canete
-\.
+INSERT INTO public.usuarios VALUES (1, 'Sebastian', 'escx', '$2a$10$Dow1zWkqXqnhNjvZV0nmQOgo7IG6ZbXRYeRgo1x2VVRdUJrI7FoOO', 'admin', 'Canete');
 
 
 --
--- TOC entry 3491 (class 0 OID 0)
+-- TOC entry 3492 (class 0 OID 0)
 -- Dependencies: 215
 -- Name: test_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
 --
@@ -158,7 +178,7 @@ SELECT pg_catalog.setval('public.test_id_seq', 1, false);
 
 
 --
--- TOC entry 3492 (class 0 OID 0)
+-- TOC entry 3493 (class 0 OID 0)
 -- Dependencies: 217
 -- Name: usuarios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
 --
@@ -184,7 +204,7 @@ ALTER TABLE ONLY public.usuarios
     ADD CONSTRAINT usuarios_pkey PRIMARY KEY (id);
 
 
--- Completed on 2025-06-25 12:21:39 -03
+-- Completed on 2025-06-25 12:27:36 -03
 
 --
 -- PostgreSQL database dump complete
